@@ -1,0 +1,215 @@
+
+<md-dialog aria-label="Mango (Fruit)">
+	<md-content class="md-padding">
+	 	<form name="userForm">
+		  	<div layout layout-sm="column"> 
+			  	<md-input-container flex> 
+			  		<label>Nombre de la Tarea</label> 
+			  		<input ng-model="tarea.nombre" placeholder="Descripciòn rapida de a tarea"> 
+			  	</md-input-container> 
+
+		  	</div> 
+
+		  	<md-input-container flex> 
+		  		<label>Descripciòn</label> 
+		  		<textarea ng-model="tarea.descripcion" columns="1" md-maxlength="150"></textarea> 
+		  	</md-input-container> 
+
+		  	<div layout layout-sm="column"> 
+
+				<md-datepicker ng-model="tarea.fecha_termino" md-placeholder="Termino la tarea"></md-datepicker>
+
+				<md-datepicker ng-model="tarea.fecha_entrega" md-placeholder="Fecha Entrega"></md-datepicker>
+
+		  	</div> 
+
+		  	<div layout layout-sm="column">
+		  		<label>Estatus</label> 
+		  	</div> 
+		  	<div layout layout-sm="column">
+		  		<md-input-container flex> 
+		  		
+			  		<select ng-model="tarea.status">
+					 	<option value="0">En Espera</option>
+					 	<option value="1">En Proceso</option>
+					 	<option value="2">En Pausa</option>
+					 	<option value="3">Terminada</option>
+					 	<option value="4">Cancelada</option>
+					</select> 
+				</md-input-container>  
+		  	</div> 
+
+		  	<div layout layout-sm="column">
+		  		<label>Tipo</label> 
+		  	</div> 
+
+
+ 		  	<div layout layout-sm="column">
+		  		
+		  		<md-input-container flex> 
+			  		<label>Planificada</label> 
+			  		<input type="radio" ng-model="tarea.tipo" value="0"> 
+		  		</md-input-container> 
+
+		  		<md-input-container flex> 
+		  			<label>Mejora</label> 
+		  			<input type="radio" ng-model="tarea.tipo" value="1"> 
+		  		</md-input-container>
+
+ 		  		<md-input-container flex> 
+		  			<label>Correcciòn</label> 
+		  			<input type="radio" ng-model="tarea.tipo" value="2"> 
+		  		</md-input-container> 
+
+		  	</div> 
+
+
+
+		  	<div layout layout-sm="column">
+		  		<label>Prioridad</label> 
+		  	</div> 
+
+ 		  	<div layout layout-sm="column">
+		  		
+		  		<md-input-container flex> 
+			  		<label>Baja</label> 
+			  		<input type="radio" ng-model="tarea.prioridad" value="0"> 
+		  		</md-input-container> 
+
+		  		<md-input-container flex> 
+		  			<label>Normal</label> 
+		  			<input type="radio" ng-model="tarea.prioridad" value="1"> 
+		  		</md-input-container>
+
+ 		  		<md-input-container flex> 
+		  			<label>Alta</label> 
+		  			<input type="radio" ng-model="tarea.prioridad" value="2"> 
+		  		</md-input-container> 
+
+		  	</div> 
+
+
+
+
+	  	</form> 
+	</md-content> 
+
+	<div class="md-actions" layout="row"> 
+		<span flex></span> 
+		<md-button ng-click="answer(notuseful)"> Cancel </md-button> 
+		<md-button ng-click="agregarTarea()" class="md-primary"> Save </md-button> 
+	</div>
+</md-dialog>
+
+
+
+
+
+<!-- 
+<md-dialog aria-label="Mango (Fruit)">
+	<md-content class="md-padding">
+	 	<form name="userForm">
+		  	<div layout layout-sm="column"> 
+			  	<md-input-container flex> 
+			  		<label>Nombre del Menu</label> 
+			  		<input ng-model="menu.nombre" placeholder="Comenzando con una Mayuscula"> 
+			  	</md-input-container> 
+
+			  		<md-input-container flex> 
+			  			<label>Nombre del Icono</label> 
+			  			<input ng-model="menu.icono" placeholder="Ejem: group"> 
+			  		</md-input-container> 
+		  	</div> 
+
+		  	<md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker>
+
+		  	<md-input-container flex> 
+		  		<label>Ruta de Redirección</label> 
+		  		<input ng-model="menu.ruta" placeholder="Ejem: /users"> 
+		  	</md-input-container>
+
+ 		  	<md-input-container flex> 
+		  		<label>Script</label> 
+		  		<input ng-model="menu.stript" placeholder="Ejem: Panel.openModule()"> 
+		  	</md-input-container> 
+
+		  	<div layout layout-sm="column"> 
+		  		<md-input-container flex> 
+			  		<label>Activo</label> 
+			  		<input type="radio" ng-model="tarea.status" value="true"> 
+		  		</md-input-container> 
+
+		  		<md-input-container flex> 
+		  			<label>Inactivo</label> 
+		  			<input type="radio" ng-model="tarea.status" value="false"> 
+		  		</md-input-container> 
+
+		  	</div> 
+
+	  	</form> 
+	</md-content> 
+
+	<div class="md-actions" layout="row"> 
+		<span flex></span> 
+		<md-button ng-click="answer(notuseful)"> Cancel </md-button> 
+		<md-button ng-click="agregar_menu()" class="md-primary"> Save </md-button> 
+	</div>
+</md-dialog>
+
+ -->
+
+
+
+
+
+<!-- 
+<md-dialog aria-label="Mango (Fruit)">
+	<md-content class="md-padding">
+	 	<form name="userForm">
+		  	<div layout layout-sm="column"> 
+			  	<md-input-container flex> 
+			  		<label>First Name</label> 
+			  		<input ng-model="user.firstName" placeholder="Placeholder text"> 
+			  	</md-input-container> 
+
+			  		<md-input-container flex> 
+			  			<label>Last Name</label> <input ng-model="theMax"> 
+			  		</md-input-container> 
+		  	</div> 
+
+		  	<md-input-container flex> 
+		  		<label>Address</label> 
+		  		<input ng-model="user.address"> 
+		  	</md-input-container> 
+
+		  	<div layout layout-sm="column"> 
+		  		<md-input-container flex> 
+			  		<label>City</label> 
+			  		<input ng-model="user.city"> 
+		  		</md-input-container> 
+
+		  		<md-input-container flex> 
+		  			<label>State</label> 
+		  			<input ng-model="user.state"> 
+		  		</md-input-container> 
+
+		  		<md-input-container flex> 
+		  			<label>Postal Code</label> 
+		  			<input ng-model="user.postalCode"> 
+		  		</md-input-container> 
+		  	</div> 
+
+		  	<md-input-container flex> 
+		  		<label>Biography</label> 
+		  		<textarea ng-model="user.biography" columns="1" md-maxlength="150"></textarea> 
+		  	</md-input-container> 
+	  	</form> 
+	</md-content> 
+
+	<div class="md-actions" layout="row"> 
+		<span flex></span> 
+		<md-button ng-click="answer(notuseful)"> Cancel </md-button> 
+		<md-button ng-click="answer(useful)" class="md-primary"> Save </md-button> 
+	</div>
+</md-dialog>
+ -->

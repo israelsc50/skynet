@@ -1,0 +1,113 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<h3>
+				Asigna usuarios y proyectos a una tarea.
+			</h3>
+			<form role="form">
+				<div class="form-group">
+					 
+					<label for="exampleInputEmail1">
+						Nombre de la Tarea
+					</label>
+					<input class="form-control" id="exampleInputEmail1" type="text" ng-model="tarea.nombre" value="{{tarea.nombre}}" />
+				</div>
+				<div class="form-group">
+					 
+					<label for="exampleInputPassword1">
+						Descripción
+					</label>
+					<input class="form-control" id="exampleInputPassword1" type="text" ng-model="tarea.descripcion" value="{{tarea.descripcion}}"  />
+				</div>
+
+				
+
+				
+
+
+
+				<label for="InputSelect1">
+					Usuarios Asignados
+				</label>
+				<div class="form-group">
+
+
+
+					<select name="multipleSelect" id="multipleSelect" ng-model="tarea.users" multiple>
+				      <option ng-repeat="usuario in usuarios" value="{{ usuario._id }}">{{usuario.username}}</option>
+				    </select><br> 
+
+				    <tt>Usuarios Asignados = {{tarea.users}}</tt><br/>
+
+				</div>
+
+
+				<label for="InputSelect1">
+					Proyectos
+				</label>
+				<div class="form-group">
+
+					<select name="multipleSelect" id="multipleSelect" ng-model="tarea.proyectos" multiple>
+				      <option ng-repeat="proyecto in proyectos" value="{{ proyecto._id }}">{{proyecto.nombre}}</option>
+				    </select><br> 
+
+				    <tt>Proyecto Seleccionado = {{tarea.proyectos}}</tt><br/>
+
+				</div>
+
+			
+
+
+
+
+				<div class="text-center editBtn">
+					<button class="btn btn-success btn-sm" ng-click="actualizar()">Actualizar</button>
+        			<button class="btn btn-danger btn-sm" ng-click="eliminar()">Eliminar</button>
+				</div>
+
+				<div class="btn btn-default">
+				    <a ui-sref="alta">Regresar</a>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<!-- <div ng-controller="ContactChipDemoCtrl as ctrl" layout="column" ng-cloak>
+  <md-content class="md-padding autocomplete" layout="column">
+    <md-contact-chips
+        ng-model="ctrl.contacts"
+        md-contacts="ctrl.querySearch($query)"
+        md-contact-name="name"
+        md-contact-image="image"
+        md-contact-email="email"
+        md-require-match="true"
+        md-highlight-flags="i"
+        filter-selected="ctrl.filterSelected"
+        placeholder="To">
+    </md-contact-chips>
+    <md-list class="fixedRows">
+      <md-subheader class="md-no-sticky">Contacts</md-subheader>
+      <md-list-item class="md-2-line contact-item" ng-repeat="(index, contact) in ctrl.allContacts"
+          ng-if="ctrl.contacts.indexOf(contact) < 0">
+        <img ng-src="{{contact.image}}" class="md-avatar" alt="{{contact.name}}" />
+        <div class="md-list-item-text compact">
+          <h3>{{contact.name}}</h3>
+          <p>{{contact.email}}</p>
+        </div>
+      </md-list-item>
+      <md-list-item class="md-2-line contact-item selected" ng-repeat="(index, contact) in ctrl.contacts">
+        <img ng-src="{{contact.image}}" class="md-avatar" alt="{{contact.name}}" />
+        <div class="md-list-item-text compact">
+          <h3>{{contact.name}}</h3>
+          <p>{{contact.email}}</p>
+        </div>
+      </md-list-item>
+    </md-list>
+  </md-content>
+</div>
+ -->

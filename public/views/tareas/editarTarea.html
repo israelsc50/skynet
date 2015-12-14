@@ -1,0 +1,110 @@
+<style type="text/css">
+	
+
+</style>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<h3>
+				Editar Tareas.
+			</h3>
+			<form role="form">
+				<div class="form-group">
+					 
+					<label for="exampleInputEmail1">
+						Nombre de la Tarea
+					</label>
+					<input class="form-control" id="exampleInputEmail1" type="text" ng-model="tarea.nombre" value="{{tarea.nombre}}" />
+				</div>
+				<div class="form-group">
+					 
+					<label for="exampleInputPassword1">
+						Descripción
+					</label>
+					<input class="form-control" id="exampleInputPassword1" type="text" ng-model="tarea.descripcion" value="{{tarea.descripcion}}"  />
+				</div>
+
+				<div class="form-group">
+					 
+					<label for="exampleInputPassword1">
+						Fecha termino
+					</label>
+					<input class="form-control" id="exampleInputDate1" type="text" ng-model="tarea.fecha_termino" value="{{tarea.fecha_termino | date:'dd/mm/yy'}}"  />
+				</div>
+
+				<div class="form-group">
+					 
+					<label for="exampleInputPassword1">
+						Fecha Entrega
+					</label>
+					<input class="form-control" id="exampleInputDate2" type="text" ng-model="tarea.fecha_entrega" value="{{tarea.fecha_entrega | date:'dd/mm/yy'}}"  />
+				</div>
+
+
+
+
+				<div class="form-group">
+
+					<label for="InputSelect1">
+						Estado de la Tarea
+					</label>
+
+					<select ng-model="tarea.status">
+
+					 	<option value="0">En Espera</option>
+					 	<option value="1">En Proceso</option>
+					 	<option value="2">En Pausa</option>
+					 	<option value="3">Terminada</option>
+					 	<option value="4">Cancelada</option>
+					</select> 
+
+				</div>
+
+				<div class="form-group">
+					<label for="InputRadio3">
+						Escoge Tipo
+					</label>
+			        <label class="radio-inline">
+			            <input type="radio" ng-model="tarea.tipo" value="0"> Planificada
+			        </label>
+			        <label class="radio-inline">
+			            <input type="radio" ng-model="tarea.tipo" value="1"> Mejora
+			        </label>
+			        <label class="radio-inline">
+			            <input type="radio" ng-model="tarea.tipo" value="2"> Corrección
+			        </label>
+
+				</div>
+
+
+
+				<div class="form-group">
+					<label for="exampleInputPassword1">
+						Escoge Prioridad
+					</label>
+			        <label class="radio-inline">
+			            <input type="radio" ng-model="tarea.prioridad" value="0"> Baja
+			        </label>
+			        <label class="radio-inline">
+			            <input type="radio" ng-model="tarea.prioridad" value="1"> Normal
+			        </label>
+			        <label class="radio-inline">
+			            <input type="radio" ng-model="tarea.prioridad" value="2"> Alta
+			        </label>
+
+				</div>
+
+				<div class="text-center editBtn">
+					<button class="btn btn-success btn-sm" ng-click="actualizar()">Actualizar</button>
+        			<button class="btn btn-danger btn-sm" ng-click="eliminar()">Eliminar</button>
+				</div>
+
+				<div class="btn btn-default">
+				    <a ui-sref="alta">Regresar</a>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+

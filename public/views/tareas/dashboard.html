@@ -92,8 +92,8 @@
         <div layout="column" class="md-toolbar-tools-bottom inset">
           <user-avatar></user-avatar>
           <span></span>
-          <div>Firstname Lastname</div>
-          <div>email@domainname.com</div>
+          <div>Jorge Israel Silva</div>
+          <div>israelsc50@hotmail.com</div>
         </div>
       </md-toolbar>
       <md-list>
@@ -203,16 +203,35 @@
                     <md-card-content>
                       <h2>Mis Tareas</h2>
                       <md-list>
-                        <md-item ng-repeat="item in misTareas | filter:search">   <!-- items in activity -->
+                        <md-item ng-repeat="item in misTareas | filter:search | orderBy:'-prioridad'">   <!-- items in activity -->
                           <md-item-content>
                             <div class="md-tile-left inset" hide-sm>
-                                <user-avatar></user-avatar>
+                                <!-- ICONOS DE MIS TAREAS PARA REPETIRSE -->
+                                
+                                <ng-md-icon icon="mode_edit" ng-click="editarTarea(item)" ></ng-md-icon>
+                                <ng-md-icon icon="account_circle" ng-click="usuarioTarea(item)" ></ng-md-icon>
+                                <ng-md-icon icon="vertical_align_top" ng-hide="item.prioridad==2" ng-click="masPrioridad(item)" ></ng-md-icon>
+                                <ng-md-icon icon="vertical_align_bottom" ng-hide="item.prioridad==0" ng-click="menosPrioridad(item)" ></ng-md-icon>
+                                <ng-md-icon icon="delete" ng-click="eliminar(item)" ></ng-md-icon>
+                               
+                                
+                                <!-- ICONOS DE MIS TAREAS PARA REPETIRSE -->
                             </div>
                             <div class="md-tile-content">
                               <h3>{{item.nombre}}</h3>
-                              <h4>{{item.nombre}}</h4> <!-- who quien?? -->
+                              <h4>{{item.descripcion}}</h4>
                               <p>
-                                {{item.prioridad}}
+                                Estado: {{estado[item.status]}} 
+                              </p>                               <p>
+                                Tipo: {{tipos[item.tipo]}}
+                              </p>                           <p>
+                                Prioridad: {{prioridades[item.prioridad]}} 
+                              </p>                               <p>
+                                Fecha en que se termino: {{item.fecha_termino}}
+                              </p>                           <p style="color: red;">
+                                Fecha limite de entrega: {{item.fecha_entrega | date:'fullDate' }}
+                              </p>                           <p>
+                                Created: {{item.created | date:'fullDate'}}
                               </p>
                             </div>
                           </md-item-content>
@@ -240,20 +259,27 @@
                     <md-card-content>
                       <h2>Tareas</h2>
                       <md-list>
-                        <md-item ng-repeat="item in tareas | filter:search | orderBy:'-what'">
+                        <md-item ng-repeat="item in tareas | filter:search | orderBy:'-prioridad'">
                           <md-item-content>
                             <div class="md-tile-left inset" hide-sm>
-                                <user-avatar></user-avatar>
+                                <!-- ICONOS DE MIS TAREAS PARA REPETIRSE -->
+                                
+                                <ng-md-icon icon="mode_edit" ng-click="editarTarea(item)" ></ng-md-icon>
+                                <ng-md-icon icon="account_circle" ng-click="usuarioTarea(item)" ></ng-md-icon>
+                                <ng-md-icon icon="vertical_align_top" ng-hide="item.prioridad==2" ng-click="masPrioridad(item)" ></ng-md-icon>
+                                <ng-md-icon icon="vertical_align_bottom" ng-hide="item.prioridad==0" ng-click="menosPrioridad(item)" ></ng-md-icon>
+                                <ng-md-icon icon="delete" ng-click="eliminar(item)" ></ng-md-icon>
+                                <!-- ICONOS DE MIS TAREAS PARA REPETIRSE -->
                             </div>
                             <div class="md-tile-content">
                               <h3>{{item.nombre}}</h3>
                               <h4>{{item.descripcion}}</h4>
                               <p>
-                                {{item.status}}
+                                Estado: {{estado[item.status]}} 
                               </p>                               <p>
-                                {{item.tipo}}
+                                Tipo: {{tipos[item.tipo]}}
                               </p>                           <p>
-                                {{item.prioridad}}
+                                Prioridad: {{prioridades[item.prioridad]}} 
                               </p>                               <p>
                                 Fecha en que se termino: {{item.fecha_termino}}
                               </p>                           <p style="color: red;">
@@ -291,15 +317,32 @@
                           <md-item ng-repeat="item in tareaEnEspera | filter:search | orderBy:'-what'">
                             <md-item-content>
                               <div class="md-tile-left inset" hide-sm>
-                                  <user-avatar></user-avatar>
+                                  <!-- ICONOS DE MIS TAREAS PARA REPETIRSE -->
+                                
+                                <ng-md-icon icon="mode_edit" ng-click="editarTarea(item)" ></ng-md-icon>
+                                <ng-md-icon icon="account_circle" ng-click="usuarioTarea(item)" ></ng-md-icon>
+                                <ng-md-icon icon="vertical_align_top" ng-hide="item.prioridad==2" ng-click="masPrioridad(item)" ></ng-md-icon>
+                                <ng-md-icon icon="vertical_align_bottom" ng-hide="item.prioridad==0" ng-click="menosPrioridad(item)" ></ng-md-icon>
+                                <ng-md-icon icon="delete" ng-click="eliminar(item)" ></ng-md-icon>
+                                  <!-- ICONOS DE MIS TAREAS PARA REPETIRSE -->
                               </div>
                               <div class="md-tile-content">
                                 <h3>{{item.nombre}}</h3>
-                                <h4>{{item.nombre}}</h4>
+                                <h4>{{item.descripcion}}</h4>
                                 <p>
-                                  {{item.prioridad}}
+                                  Estado: {{estado[item.status]}} 
+                                </p>                               <p>
+                                  Tipo: {{tipos[item.tipo]}}
+                                </p>                           <p>
+                                  Prioridad: {{prioridades[item.prioridad]}} 
+                                </p>                               <p>
+                                  Fecha en que se termino: {{item.fecha_termino}}
+                                </p>                           <p style="color: red;">
+                                  Fecha limite de entrega: {{item.fecha_entrega | date:'fullDate' }}
+                                </p>                           <p>
+                                  Created: {{item.created | date:'fullDate'}}
                                 </p>
-                              </div>
+                            </div>
                             </md-item-content>
                             <md-divider md-inset hide-sm ng-if="!$last"></md-divider>
                             <md-divider hide-gt-sm ng-if="!$last"></md-divider>
@@ -330,13 +373,30 @@
                           <md-item ng-repeat="item in tareasEnProceso | filter:search | orderBy:'-what'">
                             <md-item-content>
                               <div class="md-tile-left inset" hide-sm>
-                                  <user-avatar></user-avatar>
+                                  <!-- ICONOS DE MIS TAREAS PARA REPETIRSE -->
+                                
+                                <ng-md-icon icon="mode_edit" ng-click="editarTarea(item)" ></ng-md-icon>
+                                <ng-md-icon icon="account_circle" ng-click="usuarioTarea(item)" ></ng-md-icon>
+                                <ng-md-icon icon="vertical_align_top" ng-hide="item.prioridad==2" ng-click="masPrioridad(item)" ></ng-md-icon>
+                                <ng-md-icon icon="vertical_align_bottom" ng-hide="item.prioridad==0" ng-click="menosPrioridad(item)" ></ng-md-icon>
+                                <ng-md-icon icon="delete" ng-click="eliminar(item)" ></ng-md-icon>
+                                <!-- ICONOS DE MIS TAREAS PARA REPETIRSE -->
                               </div>
                               <div class="md-tile-content">
                                 <h3>{{item.nombre}}</h3>
-                                <h4>{{item.nombre}}</h4>
+                                <h4>{{item.descripcion}}</h4>
                                 <p>
-                                  {{item.prioridad}}
+                                  Estado: {{estado[item.status]}} 
+                                </p>                               <p>
+                                  Tipo: {{tipos[item.tipo]}}
+                                </p>                           <p>
+                                  Prioridad: {{prioridades[item.prioridad]}} 
+                                </p>                               <p>
+                                  Fecha en que se termino: {{item.fecha_termino}}
+                                </p>                           <p style="color: red;">
+                                  Fecha limite de entrega: {{item.fecha_entrega | date:'fullDate' }}
+                                </p>                           <p>
+                                  Created: {{item.created | date:'fullDate'}}
                                 </p>
                               </div>
                             </md-item-content>
@@ -354,6 +414,176 @@
                     </md-card>
 
               </div>
+
+              <div role="tabpanel"
+                   id="tab5-content"
+                   aria-labelledby="tab5"
+                   ng-switch-when="4"
+                   md-swipe-left="next()"
+                   md-swipe-right="previous()" 
+                   layout="row" layout-align="center center">
+                    <md-card flex-gt-sm="90" flex-gt-md="80">
+                      <md-card-content>
+                        <h2>En Pausa</h2>
+                        <md-list>
+                          <md-item ng-repeat="item in tareasEnPausa | filter:search | orderBy:'-what'">
+                            <md-item-content>
+                              <div class="md-tile-left inset" hide-sm>
+                                  <!-- ICONOS DE MIS TAREAS PARA REPETIRSE -->
+                                
+                                <ng-md-icon icon="mode_edit" ng-click="editarTarea(item)" ></ng-md-icon>
+                                <ng-md-icon icon="account_circle" ng-click="usuarioTarea(item)" ></ng-md-icon>
+                                <ng-md-icon icon="vertical_align_top" ng-hide="item.prioridad==2" ng-click="masPrioridad(item)" ></ng-md-icon>
+                                <ng-md-icon icon="vertical_align_bottom" ng-hide="item.prioridad==0" ng-click="menosPrioridad(item)" ></ng-md-icon>
+                                <ng-md-icon icon="delete" ng-click="eliminar(item)" ></ng-md-icon>
+                                  <!-- ICONOS DE MIS TAREAS PARA REPETIRSE -->
+                              </div>
+                              <div class="md-tile-content">
+                                <h3>{{item.nombre}}</h3>
+                                <h4>{{item.descripcion}}</h4>
+                                <p>
+                                  Estado: {{estado[item.status]}} 
+                                </p>                               <p>
+                                  Tipo: {{tipos[item.tipo]}}
+                                </p>                           <p>
+                                  Prioridad: {{prioridades[item.prioridad]}} 
+                                </p>                               <p>
+                                  Fecha en que se termino: {{item.fecha_termino}}
+                                </p>                           <p style="color: red;">
+                                  Fecha limite de entrega: {{item.fecha_entrega | date:'fullDate' }}
+                                </p>                           <p>
+                                  Created: {{item.created | date:'fullDate'}}
+                                </p>
+                              </div>
+                            </md-item-content>
+                            <md-divider md-inset hide-sm ng-if="!$last"></md-divider>
+                            <md-divider hide-gt-sm ng-if="!$last"></md-divider>
+                          </md-item>
+                          <md-divider></md-divider>
+                          <md-item layout class="inset">
+                              <md-button layout layout-align="start center" flex class="md-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg> More
+                              </md-button>
+                          </md-item>
+                        </md-list>
+                      </md-card-content>
+                    </md-card>
+
+              </div>
+
+              <div role="tabpanel"
+                   id="tab6-content"
+                   aria-labelledby="tab6"
+                   ng-switch-when="5"
+                   md-swipe-left="next()"
+                   md-swipe-right="previous()" 
+                   layout="row" layout-align="center center">
+                    <md-card flex-gt-sm="90" flex-gt-md="80">
+                      <md-card-content>
+                        <h2>Terminadas</h2>
+                        <md-list>
+                          <md-item ng-repeat="item in tareasTerminadas | filter:search | orderBy:'-what'">
+                            <md-item-content>
+                              <div class="md-tile-left inset" hide-sm>
+                                  <!-- ICONOS DE MIS TAREAS PARA REPETIRSE -->
+                                
+                                <ng-md-icon icon="mode_edit" ng-click="editarTarea(item)" ></ng-md-icon>
+                                <ng-md-icon icon="account_circle" ng-click="usuarioTarea(item)" ></ng-md-icon>
+                                <ng-md-icon icon="vertical_align_top" ng-hide="item.prioridad==2" ng-click="masPrioridad(item)" ></ng-md-icon>
+                                <ng-md-icon icon="vertical_align_bottom" ng-hide="item.prioridad==0" ng-click="menosPrioridad(item)" ></ng-md-icon>
+                                <ng-md-icon icon="delete" ng-click="eliminar(item)" ></ng-md-icon>
+                                  <!-- ICONOS DE MIS TAREAS PARA REPETIRSE -->
+                              </div>
+                              <div class="md-tile-content">
+                                <h3>{{item.nombre}}</h3>
+                                <h4>{{item.descripcion}}</h4>
+                                <p>
+                                  Estado: {{estado[item.status]}} 
+                                </p>                               <p>
+                                  Tipo: {{tipos[item.tipo]}}
+                                </p>                           <p>
+                                  Prioridad: {{prioridades[item.prioridad]}} 
+                                </p>                               <p>
+                                  Fecha en que se termino: {{item.fecha_termino}}
+                                </p>                           <p style="color: red;">
+                                  Fecha limite de entrega: {{item.fecha_entrega | date:'fullDate' }}
+                                </p>                           <p>
+                                  Created: {{item.created | date:'fullDate'}}
+                                </p>
+                              </div>
+                            </md-item-content>
+                            <md-divider md-inset hide-sm ng-if="!$last"></md-divider>
+                            <md-divider hide-gt-sm ng-if="!$last"></md-divider>
+                          </md-item>
+                          <md-divider></md-divider>
+                          <md-item layout class="inset">
+                              <md-button layout layout-align="start center" flex class="md-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg> More
+                              </md-button>
+                          </md-item>
+                        </md-list>
+                      </md-card-content>
+                    </md-card>
+
+              </div>
+
+
+              <div role="tabpanel"
+                   id="tab7-content"
+                   aria-labelledby="tab7"
+                   ng-switch-when="6"
+                   md-swipe-left="next()"
+                   md-swipe-right="previous()" 
+                   layout="row" layout-align="center center">
+                    <md-card flex-gt-sm="90" flex-gt-md="80">
+                      <md-card-content>
+                        <h2>Canceladas</h2>
+                        <md-list>
+                          <md-item ng-repeat="item in tareasCanceladas | filter:search | orderBy:'-what'">
+                            <md-item-content>
+                              <div class="md-tile-left inset" hide-sm>
+                                  <!-- ICONOS DE MIS TAREAS PARA REPETIRSE -->
+                                
+                                <ng-md-icon icon="mode_edit" ng-click="editarTarea(item)" ></ng-md-icon>
+                                <ng-md-icon icon="account_circle" ng-click="usuarioTarea(item)" ></ng-md-icon>
+                                <ng-md-icon icon="vertical_align_top" ng-hide="item.prioridad==2" ng-click="masPrioridad(item)" ></ng-md-icon>
+                                <ng-md-icon icon="vertical_align_bottom" ng-hide="item.prioridad==0" ng-click="menosPrioridad(item)" ></ng-md-icon>
+                                <ng-md-icon icon="delete" ng-click="eliminar(item)" ></ng-md-icon>
+                                <!-- ICONOS DE MIS TAREAS PARA REPETIRSE -->
+                              </div>
+                              <div class="md-tile-content">
+                                <h3>{{item.nombre}}</h3>
+                                <h4>{{item.descripcion}}</h4>
+                                <p>
+                                  Estado: {{estado[item.status]}} 
+                                </p>                               <p>
+                                  Tipo: {{tipos[item.tipo]}}
+                                </p>                           <p>
+                                  Prioridad: {{prioridades[item.prioridad]}} 
+                                </p>                               <p>
+                                  Fecha en que se termino: {{item.fecha_termino}}
+                                </p>                           <p style="color: red;">
+                                  Fecha limite de entrega: {{item.fecha_entrega | date:'fullDate' }}
+                                </p>                           <p>
+                                  Created: {{item.created | date:'fullDate'}}
+                                </p>
+                              </div>
+                            </md-item-content>
+                            <md-divider md-inset hide-sm ng-if="!$last"></md-divider>
+                            <md-divider hide-gt-sm ng-if="!$last"></md-divider>
+                          </md-item>
+                          <md-divider></md-divider>
+                          <md-item layout class="inset">
+                              <md-button layout layout-align="start center" flex class="md-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg> More
+                              </md-button>
+                          </md-item>
+                        </md-list>
+                      </md-card-content>
+                    </md-card>
+
+              </div>
+
               
           </ng-switch>
           
